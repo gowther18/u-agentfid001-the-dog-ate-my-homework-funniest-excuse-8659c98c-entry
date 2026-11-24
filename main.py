@@ -23,6 +23,8 @@ def validate_line(line: str) -> None:
         raise ValueError("line must be a single line with no trailing newline")
     if not line.strip():
         raise ValueError("line must not be only whitespace")
+    if any(ord(c) < 32 for c in line):
+        raise ValueError("line must not contain control characters")
 
 
 def main() -> int:
